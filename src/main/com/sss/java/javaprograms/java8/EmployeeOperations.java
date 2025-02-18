@@ -58,8 +58,5 @@ public class EmployeeOperations {
         //3.9 Who has the most working experience in the organization?
         Optional<Employee> mostworkingexperience = employeeList.stream().sorted(Comparator.comparing(Employee::getYearOfJoining)).findFirst();
         System.out.print("mostworkingexperience"+mostworkingexperience);
-
-
-
     }
 }
