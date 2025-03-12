@@ -43,7 +43,7 @@ public class LamdaOperations {
 
         //7.print the numbers which are multiples of 5
         List<Integer> listOfIntegersMultiplesof5 = Arrays.asList(45, 12, 56, 15, 24, 75, 31, 89);
-        //listOfIntegersMultiplesof5.stream().filter(i -> i % 5 == 0).forEach(System.out::println);
+        //listOfIntegersMultiplesof5.stream().filter(i -> i % 5 == 0).forEach(System.out::println);+
 
         //8.find maximum and minimum of those numbers
         int max = listOfIntegersMultiplesof5.stream().max(Comparator.naturalOrder()).get();
@@ -150,11 +150,20 @@ public class LamdaOperations {
         System.out.print("extractedEleemnts" + extractedEleemnts);
 
         //26.first repeacted characters in string
-        String instr = "java concept of the day".replaceAll("\\s+", "");
-        Map<String, Long> mostrepeatedcharacters = Arrays.stream(instr.split("")).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        String firstRepeatedChar = mostrepeatedcharacters.entrySet().stream().filter(entry -> entry.getValue() > 1).map(entry -> entry.getKey()).findFirst()
-                .get();
-        System.out.print("firstRepeatedChar====" + firstRepeatedChar);
+        String instr = "hello world".replaceAll("\\s+", "");
+        Map<String, Long> mostrepeatedcharacters = Arrays.stream(instr.split("")).collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new, Collectors.counting()));
+
+        String firstNonRepeatedChar = mostrepeatedcharacters.entrySet().stream()
+                .filter(entry -> entry.getValue() == 1)
+                .map(Map.Entry::getKey)
+                .findFirst()
+                .orElse(null);
+        if (firstNonRepeatedChar != null) {
+            System.out.println("First non-repeated character: " + firstNonRepeatedChar);
+            System.out.println("First non-repeated character index: " + instr.indexOf(firstNonRepeatedChar));
+        } else {
+            System.out.println("No non-repeated characters found.");
+        }
 
         //27.print duplicate characters in the string
         mostrepeatedcharacters.entrySet().stream().filter(entry -> entry.getValue() > 1).map(entry -> entry.getKey()).collect(Collectors.toList()).forEach(System.out::println);
@@ -166,6 +175,16 @@ public class LamdaOperations {
         List<String> listOfStrings10 = Arrays.asList("One", "Two", "Three", "Four", "Five", "Six");
         String lastelementofString = listOfStrings10.stream().skip(listOfStrings10.size() - 1).findFirst().get();
         System.out.print(lastelementofString);
+
+        int[] arr = {-14,-13,0,1,8,10};
+        int [] mularr = Arrays.stream(arr).map(mul -> mul * mul ).toArray();
+        System.out.print(Arrays.toString(mularr));
+
+        int[] nums2 = {2, 2, 1, 1, 1, 2, 2};
+        int result =Arrays.stream(nums2).boxed().collect(Collectors.groupingBy(Function.identity(),Collectors.counting())).entrySet().
+                stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(-1);
+        System.out.print("Majority Element"+result);
+
 
 
     }

@@ -24,7 +24,7 @@ public class EmployeeOperations {
         employeeList.add(new Employee(266, "Sanvi Pandey", 26, "Female", "Product Development", 2015, 28900.0));
         employeeList.add(new Employee(277, "Anuj Chettiar", 31, "Male", "Product Development", 2012, 35700.0));
 
-        //3.1 : How many male and female employees are there in the organization?
+        //3.1 : How many male and female employees are there in the organization?0
         Map<String,Long> noofMaleandFemaleEmployees = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender,Collectors.counting()));
         System.out.print("\nnoofMaleandFemaleEmployees:"+noofMaleandFemaleEmployees);
 
