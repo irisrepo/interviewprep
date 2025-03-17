@@ -185,6 +185,11 @@ public class LamdaOperations {
                 stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(-1);
         System.out.print("Majority Element"+result);
 
+        //first 3 elements
+        int[] num = {1,2,1,3,3,4,4,4,5,6,6};
+        Set<Integer> unique = new HashSet<>();
+        Arrays.stream(num).boxed().filter(nums -> !unique.add(nums)).limit(3).forEach(System.out::println);
+
 
 
     }

@@ -17,7 +17,6 @@ public class JavaConceptOftheday8 {
         int[] result1 = getIndexes(nums1, target1);
         System.out.println("Example 1: [" + result1[0] + ", " + result1[1] + "]"); // Output: [0, 1]
 
-
     }
 
     public static int[] getIndexes(int[] arr, int target) {
