@@ -15,7 +15,5 @@ public class IntersectionOfArrays {
         list1.stream().filter(list2::contains).distinct().collect(Collectors.toList()).forEach(System.out::println);
 
 
-
-
     }
 }

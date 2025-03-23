@@ -189,7 +189,16 @@ public class LamdaOperations {
         int[] num = {1,2,1,3,3,4,4,4,5,6,6};
         Set<Integer> unique = new HashSet<>();
         Arrays.stream(num).boxed().filter(nums -> !unique.add(nums)).limit(3).forEach(System.out::println);
+        //program for Remove duplicates from String
+        String st = "removeduplicatestring";
+        Set<String> uniqueC = new HashSet<>();
+        String removeErase = Arrays.stream(st.split("")).filter(ch -> uniqueC.add(ch)).collect(Collectors.joining());
+        System.out.print("removeErase==="+removeErase);
 
+        List<Integer> numList = Arrays.asList(1,2,3,1,2,3,4,5,5);
+        Integer nums = numList.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .entrySet().stream().filter(entry ->entry.getValue() ==1).map(Map.Entry::getKey).findFirst().get();
+        System.out.print("No repeated element=="+nums);
 
 
     }

@@ -32,7 +32,7 @@ public class EmployeeOperations {
         employeeList.stream().map(emp ->emp.getDepartment()).distinct().collect(Collectors.toList()).forEach(System.out::println);
 
         //3.3 What is the average age of male and female employees?
-        Map<String,Double> avgAgeMaleandFemaleEmployees = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender,Collectors.averagingDouble(Employee::getAge)));
+        Map<String,Double> avgAgeMaleandFemaleEmployees = employeeList.stream().collect(Collectors.groupingBy(Employee::getGender,Collectors.summingDouble(Employee::getSalary)));
         System.out.print("\navgAgeMaleandFemaleEmployees:"+avgAgeMaleandFemaleEmployees);
 
         //3.4 Get the details of highest paid employee in the organization?
